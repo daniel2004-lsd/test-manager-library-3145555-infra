@@ -50,6 +50,7 @@ services:
     ports:
       - "${API_PORT:-8000}:8000"
     volumes:
+      - ../test-manager-library-3145555-api:/var/www/html
       - covers:/var/www/html/var/covers
     depends_on:
       db:
@@ -61,6 +62,8 @@ services:
   app:
     build:
       context: ../test-manager-library-3145555-app
+      args:
+        VITE_API_URL: http://localhost:${API_PORT:-8000}/api/v1
     ports:
       - "${APP_PORT:-5173}:${APP_CONTAINER_PORT:-80}"
     depends_on:
