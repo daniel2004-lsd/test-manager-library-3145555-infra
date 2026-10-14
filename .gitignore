@@ -1,0 +1,5 @@
+# Secretos locales: solo se versiona .env.example
+.env
+
+# Docker
+*.log
